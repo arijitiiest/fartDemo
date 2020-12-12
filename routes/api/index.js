@@ -1,9 +1,12 @@
 const { Router } = require("express");
 
-const firebase = require("../../utils/firebase");
+const authRouter = require("./auth");
+const userRouter = require("./user");
 
 const router = Router();
 
-// console.log(firebase.firestore().collection('products').add({name: "Arijit", email: "arijit"}))
+router.use("/auth", authRouter);
+
+router.use("/user", userRouter);
 
 module.exports = router;
