@@ -12,10 +12,14 @@ const firebaseConfig = {
   appId: process.env.APP_ID,
 };
 
-const serviceAccount = require("/home/arijitiiest/Documents/Firebase/fartdemo1-firebase-adminsdk-qwscv-b135d78775.json");
+// const serviceAccount = require("/home/arijitiiest/Documents/Firebase/fartdemo1-firebase-adminsdk-qwscv-b135d78775.json");
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert({
+    "private_key": process.env.PRIVATE_KEY,
+    "client_email": process.env.CLIENT_EMAIL,
+    "project_id": process.env.PROJECT_ID
+  }),
 });
 
 firebase.initializeApp(firebaseConfig);
