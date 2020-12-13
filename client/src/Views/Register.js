@@ -53,7 +53,7 @@ const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [birthday, setBirthday] = useState("2020-12-13");
-  const [phoneno, setPhoneno] = useState();
+  const [phoneno, setPhoneno] = useState("");
 
 
   const email_regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -81,9 +81,26 @@ const Register = (props) => {
     e.preventDefault();
     if (
       email.length === 0 ||
-      password.length === 0 ||
-      !email_regex.test(email)
+      password.length < 6 ||
+      !email_regex.test(email) ||
+      first_name.length < 5 ||
+      last_name.length < 5 ||
+      phoneno.length !== 10
     ) {
+      if (email.length === 0) 
+        alert("Email incorrect");
+      else if (password.length < 6)
+        alert("password length should be greater than 5");
+      else if(email_regex.test(email)) 
+        alert("Email invalid");
+      else if(first_name.length < 5)
+        alert("First Name should be greater than 4")
+      else if(last_name.length < 5)
+        alert("Last Name should be greater than 4")
+      else if(phoneno.length !== 10)
+        alert("Phone no should be length 10")
+      else  
+        alert("Error occured")
       console.log("Error");
       return;
     }

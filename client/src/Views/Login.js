@@ -76,11 +76,15 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      email.length === 0 ||
-      password.length === 0 ||
-      !email_regex.test(email)
-    ) {
+    if (email.length === 0 || password.length < 6 || !email_regex.test(email)) {
+      if (email.length === 0) 
+        alert("Email incorrect");
+      else if (password.length < 6)
+        alert("password length should be greater than 5");
+      else if(email_regex.test(email)) 
+        alert("Email invalid");
+      else  
+        alert("Error occured")
       console.log("Error");
       return;
     }

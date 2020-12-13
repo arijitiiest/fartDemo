@@ -97,14 +97,27 @@ const AddUser = (props) => {
     e.preventDefault();
     if (
       email.length === 0 ||
-      password.length === 0 ||
-      first_name.length === 0 ||
-      last_name.length === 0 ||
-      phoneno.length !== 10 ||
-      !email_regex.test(email)
+      password.length < 6 ||
+      !email_regex.test(email) ||
+      first_name.length < 5 ||
+      last_name.length < 5 ||
+      phoneno.length !== 10
     ) {
+      if (email.length === 0) 
+        alert("Email incorrect");
+      else if (password.length < 6)
+        alert("password length should be greater than 5");
+      else if(email_regex.test(email)) 
+        alert("Email invalid");
+      else if(first_name.length < 5)
+        alert("First Name should be greater than 4")
+      else if(last_name.length < 5)
+        alert("Last Name should be greater than 4")
+      else if(phoneno.length !== 10)
+        alert("Phone no should be length 10")
+      else  
+        alert("Error occured")
       console.log("Error");
-      alert("Error")
       return;
     }
     axois
