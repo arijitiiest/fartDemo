@@ -11,7 +11,7 @@ exports.postLogin = async (req, res) => {
     }
 
     const idToken = await firebase.auth().currentUser.getIdToken(true);
-    res.status(200).json({ token: idToken });
+    res.status(200).json({ token: idToken, uid: firebase.auth().currentUser.uid });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Something went wrong" });
